@@ -44,7 +44,11 @@ appear up to the interval later. Every other screen keeps EMI's own timing.
 
 ## Config
 
-`config/tomsstoragesearchcache-client.toml`
+In game: **Mods -> Tom's Simple Storage search cache fix -> Config** (needs
+[Cloth Config](https://modrinth.com/mod/cloth-config), which most packs already have). The EMI
+interval applies immediately; the cache lifetime needs a restart.
+
+Or edit `config/tomsstoragesearchcache-client.toml`:
 
 | Option | Default | Meaning |
 | --- | --- | --- |
@@ -54,7 +58,7 @@ appear up to the interval later. Every other screen keeps EMI's own timing.
 ## Building
 
 No Gradle: `build.sh` compiles against the libraries of an existing Forge 1.20.1-47.4.13 install and
-the Tom's Simple Storage and EMI jars from a mods folder.
+the Tom's Simple Storage, EMI and Cloth Config jars from a mods folder.
 
 ```sh
 LIBS="$APPDATA/PrismLauncher/libraries" MODS="path/to/minecraft/mods" ./build.sh
