@@ -4,7 +4,7 @@ license="Apache-2.0"
 
 [[mods]]
 modId="tomsstoragesearchcache"
-version="1.0.0"
+version="1.1.0"
 displayName="Tom's Simple Storage search cache fix"
 description='''
 Client-side fix for terminal search lag in Tom's Simple Storage 1.7.1.
