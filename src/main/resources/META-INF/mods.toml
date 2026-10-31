@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="Apache-2.0"
+
+[[mods]]
+modId="tomsstoragesearchcache"
+version="1.0.0"
+displayName="Tom's Simple Storage search cache fix"
+description='''
+Client-side fix for terminal search lag in Tom's Simple Storage 1.7.1.
+
+A plain search falls back to matching each item's full tooltip, and Tom's caches those tooltips
+for only 5 seconds, so typing in the terminal rebuilds hundreds of tooltips on the render thread.
+This keeps the caches for an hour instead (configurable in config/tomsstoragesearchcache-client.toml).
+Search results are unchanged.
+'''
+
+[[dependencies.tomsstoragesearchcache]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.tomsstoragesearchcache]]
+    modId="toms_storage"
+    mandatory=true
+    versionRange="[1.7.1,)"
+    ordering="AFTER"
+    side="CLIENT"
