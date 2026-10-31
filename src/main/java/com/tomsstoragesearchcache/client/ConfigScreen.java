@@ -47,6 +47,11 @@ public class ConfigScreen {
 						.setMax(5000)
 						.setTooltip(lines("terminalSyncMillis", 3))
 						.setSaveConsumer(SearchCacheConfig.EMI_TERMINAL_SYNC_MILLIS::set)
+						.build())
+				.addEntry(entries.startBooleanToggle(text("skipUnchangedSnapshots"), SearchCacheConfig.EMI_SKIP_UNCHANGED.get())
+						.setDefaultValue(true)
+						.setTooltip(lines("skipUnchangedSnapshots", 3))
+						.setSaveConsumer(SearchCacheConfig.EMI_SKIP_UNCHANGED::set)
 						.build());
 
 		return builder.build();

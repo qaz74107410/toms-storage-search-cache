@@ -10,6 +10,7 @@ public class SearchCacheConfig {
 	public static final ForgeConfigSpec SPEC;
 	public static final ForgeConfigSpec.LongValue CACHE_SECONDS;
 	public static final ForgeConfigSpec.IntValue EMI_TERMINAL_SYNC_MILLIS;
+	public static final ForgeConfigSpec.BooleanValue EMI_SKIP_UNCHANGED;
 
 	static {
 		ForgeConfigSpec.Builder b = new ForgeConfigSpec.Builder();
@@ -39,6 +40,12 @@ public class SearchCacheConfig {
 				"unchanged; it can only appear up to this long after the terminal's item list does.",
 				"Every other screen keeps EMI's own interval. 50 = stock behaviour.")
 				.defineInRange("terminalSyncMillis", DEFAULT_EMI_MILLIS, 50, 5000);
+		EMI_SKIP_UNCHANGED = b.comment(
+				"Each of those snapshots costs tens of milliseconds of render thread in a large network,",
+				"even when nothing changed. When true, inside a storage terminal EMI only rebuilds it",
+				"after the terminal's item list or a slot in the menu (inventory, crafting grid) has",
+				"changed. The craftables list is the same. false = stock behaviour.")
+				.define("skipUnchangedSnapshots", true);
 		b.pop();
 		SPEC = b.build();
 	}
@@ -49,5 +56,9 @@ public class SearchCacheConfig {
 
 	public static int emiTerminalSyncMillis() {
 		return SPEC.isLoaded() ? EMI_TERMINAL_SYNC_MILLIS.get() : DEFAULT_EMI_MILLIS;
+	}
+
+	public static boolean emiSkipUnchanged() {
+		return !SPEC.isLoaded() || EMI_SKIP_UNCHANGED.get();
 	}
 }

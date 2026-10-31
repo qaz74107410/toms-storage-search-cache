@@ -38,9 +38,27 @@ while Tom's only refreshes the terminal's item list about every 500 ms.
 
 ### The fix
 
-An optional mixin (skipped when EMI is absent) raises that 50 ms interval to 500 ms, only while the
-open screen is a storage terminal. The craftables list is computed exactly as before; it can only
-appear up to the interval later. Every other screen keeps EMI's own timing.
+Profiling showed each snapshot costs 80-100 ms of render thread in a large network, so spacing them
+out is not enough. Optional mixins (skipped when EMI is absent), active only while the open screen is
+a storage terminal:
+
+- **Skip unchanged snapshots**: the snapshot is only rebuilt after the terminal received an item list
+  update from the server, or a menu slot (inventory, crafting grid) changed - tracked by a packet
+  counter and a stack identity/count fingerprint of the menu slots. Otherwise it would be identical.
+- **Interval**: the 50 ms interval is raised to 500 ms, matching how often Tom's refreshes the list.
+
+The craftables list is computed exactly as before. Every other screen keeps EMI's own behaviour.
+
+## Test results
+
+Measured with Java Flight Recorder in a ~365-mod pack (Cisco's Fantasy Medieval RPG), render thread:
+
+| | Before | After |
+| --- | --- | --- |
+| Tom's search while typing (samples, ~4 s of typing) | 175 | 43 |
+| of which tooltip building | 167 | 10 |
+
+Search fix: tested in game, typing is smooth. EMI snapshot skipping: **not yet tested in game**.
 
 ## Config
 
@@ -54,6 +72,7 @@ Or edit `config/tomsstoragesearchcache-client.toml`:
 | --- | --- | --- |
 | `search.cacheSeconds` | `3600` | How long an unused cached entry is kept. `5` restores stock behaviour. |
 | `emi.terminalSyncMillis` | `500` | EMI craftables refresh interval inside a terminal. `50` restores stock behaviour. |
+| `emi.skipUnchangedSnapshots` | `true` | Skip EMI's snapshot in a terminal while nothing changed. `false` restores stock behaviour. |
 
 ## Building
 

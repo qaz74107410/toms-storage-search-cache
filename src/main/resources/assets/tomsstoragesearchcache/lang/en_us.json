@@ -9,5 +9,9 @@
   "tomsstoragesearchcache.config.terminalSyncMillis": "Craftables refresh in terminals (ms)",
   "tomsstoragesearchcache.config.terminalSyncMillis.tooltip.0": "How often EMI rechecks what you can craft while a storage terminal is open.",
   "tomsstoragesearchcache.config.terminalSyncMillis.tooltip.1": "Higher = less lag; craftables may appear up to this long after an item does.",
-  "tomsstoragesearchcache.config.terminalSyncMillis.tooltip.2": "50 = EMI default. Other screens are not affected. Applies immediately."
+  "tomsstoragesearchcache.config.terminalSyncMillis.tooltip.2": "50 = EMI default. Other screens are not affected. Applies immediately.",
+  "tomsstoragesearchcache.config.skipUnchangedSnapshots": "Skip unchanged craftables checks",
+  "tomsstoragesearchcache.config.skipUnchangedSnapshots.tooltip.0": "In a storage terminal, EMI only rechecks craftables after the item list,",
+  "tomsstoragesearchcache.config.skipUnchangedSnapshots.tooltip.1": "your inventory or the crafting grid changed. Same results, much less lag.",
+  "tomsstoragesearchcache.config.skipUnchangedSnapshots.tooltip.2": "Off = EMI default. Applies immediately."
 }
