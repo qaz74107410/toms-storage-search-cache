@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Tom's Storage Search Cache icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A1014"/>
+      <stop offset="100%" stop-color="#0B1A17"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#34D399"/>
+      <stop offset="55%" stop-color="#2DD4BF"/>
+      <stop offset="100%" stop-color="#22D3EE"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#34D399" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#34D399" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="r"><rect x="0" y="0" width="512" height="512" rx="96"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#r)">
+    <rect width="512" height="512" fill="url(#bg)"/>
+    <ellipse cx="150" cy="90" rx="300" ry="260" fill="url(#glow)"/>
+
+    <!-- stacked storage drawers -->
+    <g opacity="0.55" fill="none" stroke="#2DD4BF" stroke-width="10" stroke-linejoin="round">
+      <rect x="96" y="150" width="232" height="52" rx="14"/>
+      <rect x="96" y="222" width="232" height="52" rx="14"/>
+      <rect x="96" y="294" width="232" height="52" rx="14" stroke-opacity="0.5"/>
+    </g>
+    <g opacity="0.5" fill="#34D399">
+      <rect x="118" y="170" width="26" height="12" rx="6"/>
+      <rect x="118" y="242" width="26" height="12" rx="6"/>
+      <rect x="118" y="314" width="26" height="12" rx="6" opacity="0.6"/>
+    </g>
+
+    <!-- magnifier: instant search -->
+    <circle cx="308" cy="252" r="96" fill="#0B1117" fill-opacity="0.92" stroke="url(#accent)" stroke-width="16"/>
+    <line x1="376" y1="322" x2="428" y2="376" stroke="url(#accent)" stroke-width="22" stroke-linecap="round"/>
+
+    <!-- bolt inside the lens: no freeze -->
+    <path d="M322 178 L282 254 H312 L296 322 L342 240 H310 Z" fill="url(#accent)"/>
+  </g>
+
+  <rect x="4" y="4" width="504" height="504" rx="92" fill="none" stroke="#1E2A33" stroke-width="8"/>
+</svg>
